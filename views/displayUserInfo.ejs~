@@ -1,0 +1,17 @@
+<% include header %>
+
+Submitted Data
+    <table id="login">
+    	<tr><td>Username: </td>
+	    <td><%= username %></td>
+	</tr>
+        <tr><td>Email: </td>
+            <td><%= email %></td>
+        </tr>
+        <tr><td>Password: </td>
+            <td><%= password %></td>
+        </tr>
+    </table>
+    <ol>
+       <li><a href="/">Home Page</a> - back to the home page</li>
+<% include footer %>

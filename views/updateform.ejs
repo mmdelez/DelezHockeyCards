@@ -1,0 +1,117 @@
+<% include header %>
+
+<form method="POST" action="<%= action %>" enctype="multipart/form-data">
+    <table id="UpdatePlayer">
+    	<tr><td>First Name:</td> 
+    	<td><input type ="Fname" id="Fname" name="Fname" required/></td>
+
+    	<!-- 
+<% if(Card && Card.Fname){ %>
+	    <td><input type ="Fname" id="Fname" name="Fname" value = "<%= Card.Fname%>" required/></td>
+	    <% } else { %>
+	    <td><input type ="Fname" id="Fname" name="Fname" required/></td>
+		<% } %>
+ -->
+	</tr>
+        <tr><td>Last Name:</td>
+            <td><input type="Lname" id="Lname" name="Lname" required/></td>
+        </tr>
+        <tr><td>Player Number:</td>
+            <td><input type="PlayerNumber" id="PlayerNumber" name="PlayerNumber" required/></td>
+        </tr>
+        <tr><td>Team:</td>
+            <td>
+            <select name="Team" id="Team">
+            <option value = "Avalanche">Avalanche</option>
+            <option value = "Blackhawks">Blackhawks</option>
+            <option value = "Blue Jackets">Blue Jackets</option>
+            <option value = "Blues">Blues</option>
+            <option value = "Bruins">Bruins</option>
+            <option value = "Canadiens">Canadiens</option>
+            <option value = "Canucks">Canucks</option>
+            <option value = "Capitals">Capitals</option>
+            <option value = "Coyotes">Coyotes</option>
+            <option value = "Devils">Devils</option>
+            <option value = "Ducks">Ducks</option>
+            <option value = "Flames">Flames</option>
+            <option value = "Flyers">Flyers</option>
+            <option value = "Hurricanes">Hurricanes</option>
+            <option value = "Islanders">Islanders</option>
+            <option value = "Jets">Jets</option>
+            <option value = "Kings">Kings</option>
+            <option value = "Lightning">Lightning</option>
+            <option value = "Maple Leafs">Maple Leaf's</option>
+            <option value = "Oilers">Oilers</option>
+            <option value = "Panthers">Panthers</option>
+            <option value = "Penguins">Penguins</option>
+            <option value = "Predators">Predators</option>
+            <option value = "Rangers">Rangers</option>
+            <option value = "Red Wings">Red Wings</option>
+            <option value = "Sabres">Sabres</option>
+            <option value = "Senators">Senators</option>
+            <option value = "Sharks">Sharks</option>
+            <option value = "Stars">Stars</option>
+            <option value = "Wild">Wild</option>
+			</select>	
+            </td>
+        </tr>
+        <tr><td>Product:</td>
+        <td>
+			<select name="Product" id="Product">
+            <option value = "Certified">Certified</option>
+            <option value = "Contenders">Contenders</option>        
+            <option value = "Prizm">Prizm</option>        
+            <option value = "Totally Certified">Totally Certified</option>        
+            <option value = "Rookie Anthology">Rookie Anthology</option>        
+            <option value = "Titanium">Titanium</option>        
+            <option value = "Playbook">Playbook</option>        
+            <option value = "Dominion">Dominion</option>        
+            <option value = "Crown Royale">Crown Royale</option>        
+            <option value = "SP Authentic">SP Authentic</option>        
+            <option value = "National Treasures">National Treasures</option>
+            <option value = "Limited">Limited</option>        
+            <option value = "Prime">Prime</option>        
+            <option value = "Trilogy">Trilogy</option>        
+            <option value = "Score">Score</option>     
+            <option value = "The Cup">The Cup</option>   
+		</td>
+            </tr>
+        <tr><td>Year:</td>
+		<td>	
+            <select name="Year" id="Year">
+            <option value = "2005-06">2005-06</option>
+            <option value = "2006-07">2006-07</option>
+            <option value = "2007-08">2007-08</option>
+            <option value = "2008-09">2008-09</option>
+            <option value = "2009-10">2009-10</option>
+            <option value = "2010-11">2010-11</option>
+            <option value = "2011-12">2011-12</option>   
+            <option value = "2012-13">2012-13</option>        
+            <option value = "2013-14">2013-14</option> 
+            <option value = "2014-15">2014-15</option>        
+        </td>    
+        </tr>
+        <tr><td>Card Type:</td>
+            <td>	
+            <select name="Type" id="Type">
+            <option value = "Autograph">Autograph</option>
+            <option value = "Patch Autograph">Patch Autograph</option>
+            <option value = "Jersey Autograph">Jersey Autograph</option>
+            <option value = "Jersey">Jersey</option>
+            <option value = "Patch">Patch</option>
+            <option value = "Stick">Stick</option>      
+        </td>    
+        </tr>
+        <tr><td>Card Number:</td>
+            <td><input type="CardNumber" id="CardNumber" name="CardNumber" required/></td>
+        </tr>
+        <tr>
+        	<tr><td> Card Image:</td>
+        	<td><input type = "file" id="Image" name = "Image"></td>
+        </tr>
+    </table>
+    <input type = hidden value = "<%= Card.CardID %>" name = "CardID" />
+    <input type="submit">
+</form>
+
+<% include footer %> 

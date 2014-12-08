@@ -1,0 +1,35 @@
+<% include header %>
+
+
+   <% if(rs.length > 0) { %>
+   <div>
+    <table style = "float: left">
+        <tr><th>Player Name</th></tr>
+        <% for (var i=0; rs.length > i; i++) { %>
+            <tr>
+             <td><a href="/card/?PlayerID=<%= rs[i].PlayerID %>"> <%= rs[i].Fname %> <%=rs[i].Lname %></a></td>
+            </tr>
+        <% } %>
+    </table>
+    <table style = "float: left">
+        <tr><th>Team</th></tr>
+        <% for (var i=0; rs.length > i; i++) { %>
+            <tr>
+             <td><%= rs[i].Team %></td>
+            </tr>
+        <% } %>
+    </table>
+    <table style = "float: left">
+        <tr><th>Player Number</th></tr>
+        <% for (var i=0; rs.length > i; i++) { %>
+            <tr>
+             <td> <%= rs[i].PlayerNumber %> </td>
+            </tr>
+        <% } %>
+    </table>
+   </div>
+    <% } else { %>
+         No users are entered into the database.
+    <% } %>
+
+<% include footer %>

@@ -1,0 +1,70 @@
+<% include header %>
+
+
+<style>
+table{ width: 100%;}
+table, th, td {
+	border: 1px solid black;
+	border-collapse:collapse;}
+th, td{
+	padding: 5px;
+	text-allign: left;}
+table#t01 tr:nth-child(even){
+	background-color: #eee;
+}
+table#t01 tr:nth-child(odd){
+	background-color: #fff;
+}
+table#t01 th{
+	background-color: black;
+	color: white;
+}
+
+.center{
+	margin-left:auto;
+	margin-right: auto;
+	display:block;
+}
+</style>
+<body>
+	<% if (!rs || rs.length == 0) { %>
+        	<p> No cards to display </p>
+        <% } else { %>
+    Cards of <%= rs[0].Fname %> <%= rs[0].Lname %>
+
+    <table id="PlayerCards">
+    	<tr>
+    		<th> Card Number </th>
+    		<th> Card Type </th>
+    		<th> Product </th>
+    		<th> Product Name </th>
+    		<th> Picture </th>
+    	</tr>
+        <tr>
+        
+        <% for (var i=0; rs.length > i; i++) { %>
+		<tr>
+			<td align= "center"><%= rs[i].CardNumber %></td>
+            <td align= "center"><%= rs[i].Type %></td>
+            <td align= "center"><%= rs[i].ProductName %></td>
+            <td align= "center"><%= rs[i].ProductYear %></td>
+            <% if (rs[i].Image != null) { %>
+            	<td><a href= "/Images/<%= rs[i].Image %>"><img src="/Images/<%= rs[i].Image %>" alt="Picture of card" style = "max-width: 200px;" class = "center"  /></a></td>
+            <% } %>
+        	<td><a href="/card/update/?CardID=<%= rs[i].CardID %>">Edit</a></td>
+        	<td><form method = "post" action="/card/delete/"><input type="submit" value = "Delete">
+        	<input type = hidden value = "<%= rs[i].CardID %>" name = "CardID" />
+        	<input type = hidden value = "/card/?PlayerID=<%= rs[i].PlayerID %>" name = "next" />
+
+			</form></td>
+
+		</tr>
+        </tr>
+        <% } %>
+        <% } %>
+    </table>
+    
+       <a href="/">Home Page</a> - back to the home page
+    
+    </body>
+<% include footer %>

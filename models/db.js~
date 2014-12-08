@@ -1,0 +1,60 @@
+var mysql   = require('mysql');
+
+
+/* DATABASE CONFIGURATION */
+var connection = mysql.createConnection({
+    host: 'cwolf.cs.sonoma.edu',
+    user: 'mdelez',
+    password: '003649222'
+    //user: 'your_username',
+    //password: 'your_password'
+});
+
+var dbToUse = 'mdelez';
+
+//use the database for any queries run
+var useDatabaseQry = 'USE ' + dbToUse;
+
+//create the User table if it does not exist
+connection.query(useDatabaseQry, function (err) {
+    if (err) throw err;
+//    var DropTableQry = 'DROP TABLE IF EXISTS User';
+    var createTableQry = 'CREATE TABLE IF NOT EXISTS User('
+        + 'UserID INT AUTO_INCREMENT PRIMARY KEY'
+	+ ',Username VARCHAR(50) UNIQUE'
+        + ',Email VARCHAR(256)'
+        + ',Password VARCHAR(50)'
+        + ')';
+    connection.query(createTableQry, function (err) {
+        if (err) throw err;
+    });
+});
+
+exports.GetAll = function(callback) {
+    connection.query('select UserID, Email from User',
+        function (err, result) {
+            if(err) {
+                console.log(err);
+                callback(true);
+                return;
+            }
+            callback(false, result);
+        }
+    );
+}
+
+exports.Insert = function(userInfo, callback) {
+    console.log(userInfo);
+    var query = 'INSERT INTO User (Username, Email, Password) VALUES (\'' + userInfo.username + '\', \'' + userInfo.email + '\', \'' + userInfo.password + '\');';
+    console.log(query);
+    connection.query(query,
+        function (err, result) {
+            if(err) {
+                console.log(err);
+                callback(true);
+                return
+            }
+            callback(false, result);
+        }
+    );
+}
